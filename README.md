@@ -1,12 +1,3 @@
-[教程请点这里](https://zhuzhaohua.com/technology/vue/20190915_myblog.html)
-
-
-## 克隆至本地
-
-## 安装依赖：
-```
-yarn 
-```
 
 ## 注册并填写 评论组件所需要的key
 参见[云淡风轻](https://ioliu.cn/2017/add-valine-comments-to-your-blog/)
