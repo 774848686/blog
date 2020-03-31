@@ -1,13 +1,15 @@
 <template>
   <div class="home">
+    <loading v-if="loading"></loading>
     <div class="hero">
-      <div style="margin-top:50px">
-        <Carousel/>
+      <div class="talk-to-you">
+        <p v-html="wordsOne"></p>
+        <p v-html="wordsTwo"></p>
       </div>
-      <p class="description">
+      <div class="start" v-show="isHidden">
+         <p class="description">
         {{ data.subDescription || $description || 'Welcome to your VuePress site' }}
       </p>
-
       <p
         class="action"
         v-if="data.actionText && data.actionLink"
@@ -17,24 +19,8 @@
           :item="actionLink"
         />
       </p>
-    </div>
-
-    <div
-      class="features"
-      v-if="data.features && data.features.length"
-    >
-      <div
-        class="feature"
-        v-for="(feature, index) in data.features"
-        :key="index"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
       </div>
     </div>
-
-    <Content custom/>
-
     <div
       class="footer"
       v-if="data.footer"
@@ -45,10 +31,11 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue'
+import NavLink from './NavLink'
+import Loading from './Loading'
 
 export default {
-  components: { NavLink },
+  components: { NavLink ,Loading},
 
   computed: {
     data () {
@@ -62,8 +49,38 @@ export default {
       }
     }
   },
+  methods:{
+    printWords(htmlStr,key){
+      let index = 0,len = htmlStr.length;
+      let timer = setInterval(() => {
+        if(index>=len){
+          clearInterval(timer);
+          return;
+        }
+        this[key]+=htmlStr.charAt(index);
+        index++;
+      }, 100);
+    }
+  },
+  data(){
+    return {
+      loading:true,
+      wordsOne:'',
+      wordsTwo:'',
+      isHidden:false
+    }
+  },
   created(){
-    console.log(this.$page)
+    setTimeout(()=>{
+      this.loading = false;
+      this.printWords('一辈子很短，如白驹过隙，转瞬即逝。<br/>可这种心情很长，如高山大川，连绵不绝。','wordsOne');
+      setTimeout(()=>{
+        this.printWords('没有一颗心，会因为追求梦想会因为追求梦想而受伤。当你真心渴望某样东西时，整个宇宙都会来帮忙。','wordsTwo');
+        setTimeout(()=>{
+          this.isHidden = true;
+        },4500)
+      },4000)
+    },1500);
   }
 
 }
@@ -83,6 +100,16 @@ export default {
       max-height 280px
       display block
       margin 3rem auto 1.5rem
+    .talk-to-you
+      margin 0 auto
+      margin-top 150px
+      width 350px
+      p
+        text-align  left
+      p:nth-child(2)
+        width 400px
+    .start 
+        transition all 1s
     h1
       font-size 3rem
     h1, .description, .action

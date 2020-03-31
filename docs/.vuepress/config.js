@@ -10,7 +10,7 @@ module.exports = {
       lineNumbers: false
     },
     themeConfig: {
-        logo:"/img/logo.jpeg",
+        logo:"",
         nav: [
           { text: '首页', link: '/timeLine/' },
           { text: '技术', link:'/technology/'},
@@ -21,9 +21,7 @@ module.exports = {
           { text: '留言板', link:'/massage/'},
           { text: '链接',
             items: [
-                {text:'简书',link: 'https://www.jianshu.com/u/cbc58f855e75' },
-                {text:'GitHub',link: 'https://github.com/zhuzhaohua' },
-                {text:'码云',link: 'https://gitee.com/kobuta' },
+                {text:'GitHub',link: '' },
             ]
           }
         ],
