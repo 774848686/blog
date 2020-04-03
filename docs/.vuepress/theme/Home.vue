@@ -107,7 +107,7 @@ export default {
       p
         text-align  left
       p:nth-child(2)
-        width 400px
+        width 320px
     .start 
         transition all 1s
     h1

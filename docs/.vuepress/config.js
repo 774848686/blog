@@ -18,10 +18,10 @@ module.exports = {
           { text: '思考',link: '/ponder/'},
           { text: '标签库', link: '/tags/' },
           { text: '关于', link:'/about/'},
-          { text: '留言板', link:'/massage/'},
+          // { text: '留言板', link:'/massage/'},
           { text: '链接',
             items: [
-                {text:'GitHub',link: '' },
+                {text:'GitHub',link: 'https://github.com/774848686' },
             ]
           }
         ],
