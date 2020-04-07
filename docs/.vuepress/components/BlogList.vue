@@ -114,7 +114,6 @@ export default {
   computed: {
     pages () {
       const pages = [];
-
       if (this.type) {
         this.$site.pages.forEach(item => {
 
@@ -157,7 +156,7 @@ export default {
       this.data.total = this.pages.length;
     },
     gogogo (path) {
-      window.location.href= path;
+      window.location.href= process.env.NODE_ENV==='production'?'/blog'+path:path;
     },
     pageChange(thisPageNo){
       this.page = thisPageNo;
