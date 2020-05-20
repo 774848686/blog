@@ -64,6 +64,10 @@
     width: 100%;
     margin-bottom: 20px;
   }
+  .box-card:hover{
+    transform: scale(1.02) translateY(-5px);
+    -webkit-transform: scale(1.02) translateY(-5px);
+  }
   .pagination {
     text-align: center
   }
@@ -122,7 +126,7 @@ export default {
           }
         });
 
-        return pages;
+        return pages.reverse();
       }
 
       if (this.tag) {
@@ -135,7 +139,7 @@ export default {
           }
         });
 
-        return pages;
+        return pages.reverse();
       }
 
       this.$site.pages.forEach(item => {
@@ -145,7 +149,7 @@ export default {
         }
       });
 
-      return pages;
+      return pages.reverse();
     },
   },
   methods: {
