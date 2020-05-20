@@ -44,7 +44,13 @@ module.exports = {
         items: [{
           text: 'GitHub',
           link: 'https://github.com/774848686'
-        }, ]
+        },{
+          text:'博客园',
+          link:'https://www.cnblogs.com/zdf-xue/'
+        },{
+          text:'NPM',
+          link:"https://www.npmjs.com/settings/devin2016/packages"
+        } ]
       }
     ],
     lastUpdated: '最后更新时间',
