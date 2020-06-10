@@ -48,6 +48,9 @@ module.exports = {
           text:'博客园',
           link:'https://www.cnblogs.com/zdf-xue/'
         },{
+          text:'daily notes',
+          link:"https://github.com/774848686/daily-notes"
+        },{
           text:'NPM',
           link:"https://www.npmjs.com/settings/devin2016/packages"
         } ]
