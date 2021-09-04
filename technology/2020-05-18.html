@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue中的事件 | Devin</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/blog/img/logo.jpeg">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.838e29bd.css" as="style"><link rel="preload" href="/blog/assets/js/app.fc5ea999.js" as="script"><link rel="preload" href="/blog/assets/js/28.247b4452.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.a70d05c0.js"><link rel="prefetch" href="/blog/assets/js/11.0c92961c.js"><link rel="prefetch" href="/blog/assets/js/12.cda61294.js"><link rel="prefetch" href="/blog/assets/js/13.9927c943.js"><link rel="prefetch" href="/blog/assets/js/14.bf54b225.js"><link rel="prefetch" href="/blog/assets/js/15.4d05edd2.js"><link rel="prefetch" href="/blog/assets/js/16.cdea5720.js"><link rel="prefetch" href="/blog/assets/js/17.b53f168d.js"><link rel="prefetch" href="/blog/assets/js/18.7ab93058.js"><link rel="prefetch" href="/blog/assets/js/19.ed23b297.js"><link rel="prefetch" href="/blog/assets/js/2.e44ae2a9.js"><link rel="prefetch" href="/blog/assets/js/20.dcfc0d70.js"><link rel="prefetch" href="/blog/assets/js/21.f47d11c0.js"><link rel="prefetch" href="/blog/assets/js/22.5c0f440c.js"><link rel="prefetch" href="/blog/assets/js/23.54b9bba4.js"><link rel="prefetch" href="/blog/assets/js/24.6cf3ad9f.js"><link rel="prefetch" href="/blog/assets/js/25.0d9bdc85.js"><link rel="prefetch" href="/blog/assets/js/26.d38945fe.js"><link rel="prefetch" href="/blog/assets/js/27.251804bf.js"><link rel="prefetch" href="/blog/assets/js/29.579a3737.js"><link rel="prefetch" href="/blog/assets/js/3.d9bdd13f.js"><link rel="prefetch" href="/blog/assets/js/30.0ab476b4.js"><link rel="prefetch" href="/blog/assets/js/31.bed56718.js"><link rel="prefetch" href="/blog/assets/js/32.0586b482.js"><link rel="prefetch" href="/blog/assets/js/33.38baf68f.js"><link rel="prefetch" href="/blog/assets/js/34.c091174b.js"><link rel="prefetch" href="/blog/assets/js/35.e797b0b2.js"><link rel="prefetch" href="/blog/assets/js/4.60d303dd.js"><link rel="prefetch" href="/blog/assets/js/5.0673732d.js"><link rel="prefetch" href="/blog/assets/js/6.e320b925.js"><link rel="prefetch" href="/blog/assets/js/7.78c31044.js"><link rel="prefetch" href="/blog/assets/js/8.28231a2d.js"><link rel="prefetch" href="/blog/assets/js/9.b0ae9f40.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.838e29bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">Devin</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/timeLine/" class="nav-link">首页</a></div><div class="nav-item"><a href="/blog/technology/" class="nav-link router-link-active">技术</a></div><div class="nav-item"><a href="/blog/life/" class="nav-link">生活</a></div><div class="nav-item"><a href="/blog/ponder/" class="nav-link">思考</a></div><div class="nav-item"><a href="/blog/tags/" class="nav-link">标签库</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/774848686" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/zdf-xue/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/774848686/daily-notes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  daily notes
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.npmjs.com/settings/devin2016/packages" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/timeLine/" class="nav-link">首页</a></div><div class="nav-item"><a href="/blog/technology/" class="nav-link router-link-active">技术</a></div><div class="nav-item"><a href="/blog/life/" class="nav-link">生活</a></div><div class="nav-item"><a href="/blog/ponder/" class="nav-link">思考</a></div><div class="nav-item"><a href="/blog/tags/" class="nav-link">标签库</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/774848686" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/zdf-xue/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/774848686/daily-notes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  daily notes
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.npmjs.com/settings/devin2016/packages" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <!----> </div> <div class="page"> <div class="content"><ul><li>vue中的event分为原生dom事件以及组件自定义事件；</li></ul> <ol><li>原生dom事件的处理（原生的addEventListener 和removeEventListener 来实现监听和移除监听）</li> <li>源码实现</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token comment">//忽略对事件的编译，通过processAttrs方法对事件进行分类原生以及自定义；</span>
+    <span class="token comment">//patch中调用updateDOMListeners进行事件的处理；</span>
+<span class="token keyword">function</span> <span class="token function">updateDOMListeners</span> <span class="token punctuation">(</span><span class="token parameter">oldVnode<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>oldVnode<span class="token punctuation">.</span>data<span class="token punctuation">.</span>on<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isUndef</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>data<span class="token punctuation">.</span>on<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> on <span class="token operator">=</span> vnode<span class="token punctuation">.</span>data<span class="token punctuation">.</span>on <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> oldOn <span class="token operator">=</span> oldVnode<span class="token punctuation">.</span>data<span class="token punctuation">.</span>on <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    target$<span class="token number">1</span> <span class="token operator">=</span> vnode<span class="token punctuation">.</span>elm<span class="token punctuation">;</span>
+    <span class="token function">normalizeEvents</span><span class="token punctuation">(</span>on<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">updateListeners</span><span class="token punctuation">(</span>on<span class="token punctuation">,</span> oldOn<span class="token punctuation">,</span> add$<span class="token number">1</span><span class="token punctuation">,</span> remove$<span class="token number">2</span><span class="token punctuation">,</span> createOnceHandler$<span class="token number">1</span><span class="token punctuation">,</span> vnode<span class="token punctuation">.</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 这里会对事件进行处理</span>
+    target$<span class="token number">1</span> <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token comment">// updateListeners</span>
+<span class="token keyword">function</span> <span class="token function">updateListeners</span> <span class="token punctuation">(</span>
+    on<span class="token punctuation">,</span> <span class="token comment">// 新绑定事件</span>
+    oldOn<span class="token punctuation">,</span><span class="token comment">//旧绑定事件</span>
+    add<span class="token punctuation">,</span> <span class="token comment">// 添加事件</span>
+    remove$$<span class="token number">1</span><span class="token punctuation">,</span><span class="token comment">// 移除事件</span>
+    createOnceHandler<span class="token punctuation">,</span>
+    vm
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">,</span> def$$<span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> old<span class="token punctuation">,</span> event<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>name <span class="token keyword">in</span> on<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 遍历所有事件key值</span>
+      def$$<span class="token number">1</span> <span class="token operator">=</span> cur <span class="token operator">=</span> on<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      old <span class="token operator">=</span> oldOn<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      event <span class="token operator">=</span> <span class="token function">normalizeEvent</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>old<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 第一次没有old vnode 直接添加</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>fns<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          cur <span class="token operator">=</span> on<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">createFnInvoker</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> vm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>once<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          cur <span class="token operator">=</span> on<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">createOnceHandler</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>name<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> event<span class="token punctuation">.</span>capture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">add</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>name<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> event<span class="token punctuation">.</span>capture<span class="token punctuation">,</span> event<span class="token punctuation">.</span>passive<span class="token punctuation">,</span> event<span class="token punctuation">.</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 添加原生事件</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">!==</span> old<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//两次事件不同，则进行地址的引用</span>
+        old<span class="token punctuation">.</span>fns <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        on<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> old<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>name <span class="token keyword">in</span> oldOn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>on<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        event <span class="token operator">=</span> <span class="token function">normalizeEvent</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">remove$$1</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>name<span class="token punctuation">,</span> oldOn<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>capture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  
+ <span class="token comment">// 最终添加事件 add 跟 remove</span>
+ <span class="token keyword">function</span> <span class="token function">add$1</span> <span class="token punctuation">(</span>
+    <span class="token parameter">name<span class="token punctuation">,</span>
+    handler<span class="token punctuation">,</span>
+    capture<span class="token punctuation">,</span>
+    passive</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>useMicrotaskFix<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token operator">...</span>
+    target$<span class="token number">1.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>
+      name<span class="token punctuation">,</span>
+      handler<span class="token punctuation">,</span>
+      supportsPassive
+        <span class="token operator">?</span> <span class="token punctuation">{</span> capture<span class="token operator">:</span> capture<span class="token punctuation">,</span> passive<span class="token operator">:</span> passive <span class="token punctuation">}</span>
+        <span class="token operator">:</span> capture
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">remove$2</span> <span class="token punctuation">(</span>
+    <span class="token parameter">name<span class="token punctuation">,</span>
+    handler<span class="token punctuation">,</span>
+    capture<span class="token punctuation">,</span>
+    _target</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span>_target <span class="token operator">||</span> target$<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span>
+      name<span class="token punctuation">,</span>
+      handler<span class="token punctuation">.</span>_wrapper <span class="token operator">||</span> handler<span class="token punctuation">,</span>
+      capture
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ul><li>自定义事件</li></ul> <ol><li>在进行组件初始化的时候，当前Vue实例将把事件都挂在_events对象上；VueComponent实例中的options合并了父组件的一些listeners；</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">initEvents</span> <span class="token punctuation">(</span><span class="token parameter">vm</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>_events <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vm<span class="token punctuation">.</span>_hasHookEvent <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">// init parent attached events</span>
+    <span class="token keyword">var</span> listeners <span class="token operator">=</span> vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span>_parentListeners<span class="token punctuation">;</span><span class="token comment">// 拿到挂在父组件上的listeners</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">updateComponentListeners</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> listeners<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+ <span class="token comment">// 最终也还是调用了updateListeners 这个添加事件方法 // 这里的add 方法为target.$on(event, fn);</span>
+   <span class="token keyword">function</span> <span class="token function">updateComponentListeners</span> <span class="token punctuation">(</span>
+    <span class="token parameter">vm<span class="token punctuation">,</span>
+    listeners<span class="token punctuation">,</span>
+    oldListeners</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    target <span class="token operator">=</span> vm<span class="token punctuation">;</span>
+    <span class="token function">updateListeners</span><span class="token punctuation">(</span>listeners<span class="token punctuation">,</span> oldListeners <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> add<span class="token punctuation">,</span> remove$<span class="token number">1</span><span class="token punctuation">,</span> createOnceHandler<span class="token punctuation">,</span> vm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    target <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ol start="2"><li>$on、$emit、$off、$once</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token comment">// 当前实力添加事件</span>
+    <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$on</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">// 事件可为数组</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> event<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span>event<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 向当前实例上添加事件队列</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hookRE<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          vm<span class="token punctuation">.</span>_hasHookEvent <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> vm
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token comment">//触发自定义事件 </span>
+    <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$emit</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+      <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> lowerCaseEvent <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> cbs <span class="token operator">=</span> vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>cbs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cbs <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token function">toArray</span><span class="token punctuation">(</span>cbs<span class="token punctuation">)</span> <span class="token operator">:</span> cbs<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token function">toArray</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">&quot;event handler for \&quot;&quot;</span> <span class="token operator">+</span> event <span class="token operator">+</span> <span class="token string">&quot;\&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">invokeWithErrorHandling</span><span class="token punctuation">(</span>cbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> vm<span class="token punctuation">,</span> args<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> info<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//执行回调方法</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> vm
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">//解除事件绑定</span>
+   <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$off</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+      <span class="token comment">// all</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>arguments<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vm<span class="token punctuation">.</span>_events <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> vm
+      <span class="token punctuation">}</span>
+      <span class="token comment">// array of events</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i$<span class="token number">1</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> event<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i$<span class="token number">1</span> <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i$<span class="token number">1</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          vm<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span>event<span class="token punctuation">[</span>i$<span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 如果是数组则进行递归</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> vm
+      <span class="token punctuation">}</span>
+      <span class="token comment">// specific event</span>
+      <span class="token keyword">var</span> cbs <span class="token operator">=</span> vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cbs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> vm
+      <span class="token punctuation">}</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> vm
+      <span class="token punctuation">}</span>
+      <span class="token comment">// specific handler</span>
+      <span class="token keyword">var</span> cb<span class="token punctuation">;</span>
+      <span class="token keyword">var</span> i <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token comment">//技巧： 在删除数组中的某一项的时候，我们可用倒序循环删除的方法</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cb <span class="token operator">=</span> cbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cb <span class="token operator">===</span> fn <span class="token operator">||</span> cb<span class="token punctuation">.</span>fn <span class="token operator">===</span> fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          cbs<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//移除事件</span>
+          <span class="token keyword">break</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> vm
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// 事件触发一次</span>
+    <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$once</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token comment">//结合$on、$off进行触发后删除该事件，达到只触发一次的功能</span>
+        <span class="token keyword">function</span> <span class="token function">on</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            vm<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> on<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        on<span class="token punctuation">.</span>fn <span class="token operator">=</span> fn<span class="token punctuation">;</span>
+        vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> on<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> vm
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre></div><ul><li>总结</li></ul> <ol><li>vue中的事件操作主要分为原生事件（@click.native），组件也可进行.native的原生事件绑定和自定义事件;</li> <li>自定义事件的实质是对自身的事件进行收集和派发，只不过收集的事件是在父组件环境中</li></ol></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">5/20/2020, 11:21:16 AM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/blog/assets/js/app.fc5ea999.js" defer></script><script src="/blog/assets/js/28.247b4452.js" defer></script>
+  </body>
+</html>

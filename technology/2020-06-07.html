@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基于Element构建自己的ui组件库的流程 | Devin</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/blog/img/logo.jpeg">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.838e29bd.css" as="style"><link rel="preload" href="/blog/assets/js/app.fc5ea999.js" as="script"><link rel="preload" href="/blog/assets/js/30.0ab476b4.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.a70d05c0.js"><link rel="prefetch" href="/blog/assets/js/11.0c92961c.js"><link rel="prefetch" href="/blog/assets/js/12.cda61294.js"><link rel="prefetch" href="/blog/assets/js/13.9927c943.js"><link rel="prefetch" href="/blog/assets/js/14.bf54b225.js"><link rel="prefetch" href="/blog/assets/js/15.4d05edd2.js"><link rel="prefetch" href="/blog/assets/js/16.cdea5720.js"><link rel="prefetch" href="/blog/assets/js/17.b53f168d.js"><link rel="prefetch" href="/blog/assets/js/18.7ab93058.js"><link rel="prefetch" href="/blog/assets/js/19.ed23b297.js"><link rel="prefetch" href="/blog/assets/js/2.e44ae2a9.js"><link rel="prefetch" href="/blog/assets/js/20.dcfc0d70.js"><link rel="prefetch" href="/blog/assets/js/21.f47d11c0.js"><link rel="prefetch" href="/blog/assets/js/22.5c0f440c.js"><link rel="prefetch" href="/blog/assets/js/23.54b9bba4.js"><link rel="prefetch" href="/blog/assets/js/24.6cf3ad9f.js"><link rel="prefetch" href="/blog/assets/js/25.0d9bdc85.js"><link rel="prefetch" href="/blog/assets/js/26.d38945fe.js"><link rel="prefetch" href="/blog/assets/js/27.251804bf.js"><link rel="prefetch" href="/blog/assets/js/28.247b4452.js"><link rel="prefetch" href="/blog/assets/js/29.579a3737.js"><link rel="prefetch" href="/blog/assets/js/3.d9bdd13f.js"><link rel="prefetch" href="/blog/assets/js/31.bed56718.js"><link rel="prefetch" href="/blog/assets/js/32.0586b482.js"><link rel="prefetch" href="/blog/assets/js/33.38baf68f.js"><link rel="prefetch" href="/blog/assets/js/34.c091174b.js"><link rel="prefetch" href="/blog/assets/js/35.e797b0b2.js"><link rel="prefetch" href="/blog/assets/js/4.60d303dd.js"><link rel="prefetch" href="/blog/assets/js/5.0673732d.js"><link rel="prefetch" href="/blog/assets/js/6.e320b925.js"><link rel="prefetch" href="/blog/assets/js/7.78c31044.js"><link rel="prefetch" href="/blog/assets/js/8.28231a2d.js"><link rel="prefetch" href="/blog/assets/js/9.b0ae9f40.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.838e29bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">Devin</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/timeLine/" class="nav-link">首页</a></div><div class="nav-item"><a href="/blog/technology/" class="nav-link router-link-active">技术</a></div><div class="nav-item"><a href="/blog/life/" class="nav-link">生活</a></div><div class="nav-item"><a href="/blog/ponder/" class="nav-link">思考</a></div><div class="nav-item"><a href="/blog/tags/" class="nav-link">标签库</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/774848686" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/zdf-xue/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/774848686/daily-notes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  daily notes
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.npmjs.com/settings/devin2016/packages" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/timeLine/" class="nav-link">首页</a></div><div class="nav-item"><a href="/blog/technology/" class="nav-link router-link-active">技术</a></div><div class="nav-item"><a href="/blog/life/" class="nav-link">生活</a></div><div class="nav-item"><a href="/blog/ponder/" class="nav-link">思考</a></div><div class="nav-item"><a href="/blog/tags/" class="nav-link">标签库</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/774848686" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/zdf-xue/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/774848686/daily-notes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  daily notes
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.npmjs.com/settings/devin2016/packages" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <!----> </div> <div class="page"> <div class="content"><h3 id="摘要"><a href="#摘要" class="header-anchor">#</a> 摘要</h3> <blockquote><p>最近萌发要做一个自己的基于<code>Vue</code>的组件库的想法，尝试下自己去造一些轮子；于是翻了下业内的标杆<code>element-ui</code>组件库的设计，在此基础上去构建自己的ui库（站在巨人的肩膀上成功）。注：项目是基于vue-cli@3.x的；</p></blockquote> <h3 id="组件库的基础工程要完成的几个目标"><a href="#组件库的基础工程要完成的几个目标" class="header-anchor">#</a> 组件库的基础工程要完成的几个目标</h3> <ul><li>项目的整体结构设计</li> <li>实现组件按需加载</li> <li>项目文档的管理（随后将单独写一篇来介绍）</li> <li>发布npm</li></ul> <h3 id="基于element的目录设计"><a href="#基于element的目录设计" class="header-anchor">#</a> 基于<code>element</code>的目录设计</h3> <div class="language- extra-class"><pre class="language-text"><code>├─build // 构建相关的脚本和配置
+├─docs // 打包后的静态文件
+├─examples // 用于展示Element组件的demo
+├─lib // 构建后生成的文件，发布到npm包
+├─packages // 组件代码
+|   ├── button
+|   |     ├── button.vue //组件文件
+|   |     └── index.js // 导出Button组件以及处理供按需加载的方法
+|   ├── .. 各个组件
+|   └── theme-chalk // 这里存放所有的组件样式.scss
+├─public // index.html
+└─package.json
+</code></pre></div><p>注：这里的设计将组件跟样式进行了分离，这样做的目的是为了更好的去做按需加载</p> <h3 id="vue组件构建"><a href="#vue组件构建" class="header-anchor">#</a> Vue组件构建</h3> <p>    我们都知道在vue中组件的安装要使用<code>Vue.use(install)</code>,<code>install</code>是向外暴漏的一个方法，里面调用<code>Vue.component(component.name, component)</code>完成组件的注册；具体的源码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/* eslint-disable */</span>
+<span class="token comment">// This file is auto gererated by build/build-entry.js</span>
+<span class="token keyword">import</span> FeButton <span class="token keyword">from</span> <span class="token string">'./button'</span>
+<span class="token keyword">import</span> FeInput <span class="token keyword">from</span> <span class="token string">'./input'</span>
+<span class="token keyword">const</span> version <span class="token operator">=</span> <span class="token string">'0.0.46'</span>
+<span class="token keyword">const</span> components <span class="token operator">=</span> <span class="token punctuation">[</span>
+  FeButton<span class="token punctuation">,</span>
+  FeInput
+<span class="token punctuation">]</span>
+<span class="token keyword">const</span> <span class="token function-variable function">install</span> <span class="token operator">=</span> <span class="token parameter">Vue</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">Component</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Vue.component(component.name, component) 也可使用这个进行注册</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$message <span class="token operator">=</span> Message
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">/* istanbul ignore if */</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span>Vue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">install</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>Vue<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>
+  install<span class="token punctuation">,</span>
+  version<span class="token punctuation">,</span>
+  FeButton<span class="token punctuation">,</span>
+  FeInput
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  install<span class="token punctuation">,</span>
+  version
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>install</code>内部之所以能够使用Vue实例是<code>Vue.use</code>中进行了Vue实例的参数的合并，有兴趣的可以去看看源码这里就提上一嘴；
+<br>     以上基本的组件构造就完成了，我们也就很好的完成了第一步可在<code>main.js</code>全局导入one-piece-ui的组件进行测试；这时候我们应该思考下如何去实现按需加载的问题啦！</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> FeUI <span class="token keyword">from</span> <span class="token string">'../packages'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'../packages/theme-chalk/index.css'</span><span class="token punctuation">;</span>  
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>FeUI<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="组件的按需加载"><a href="#组件的按需加载" class="header-anchor">#</a> 组件的按需加载</h3> <ul><li>如何实现按需加载
+    根据<code>element-ui</code>的介绍，借助 <code>babel-plugin-component</code>，我们可以只引入需要的组件，以达到减小项目体积的目的。</li></ul> <p>    然后，将 .babelrc 修改为：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">&quot;es2015&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">&quot;modules&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>
+      <span class="token string">&quot;component&quot;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">&quot;libraryName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;element-ui&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;styleLibraryName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;theme-chalk&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>    这个插件的作用是什么呢？就是将引用路径进行了变换，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'one-piece-ui'</span> 
+</code></pre></div><p>    转换为：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> button <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'one-piece-ui/lib/button'</span><span class="token punctuation">)</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'one-piece-ui/lib/theme-chalk/button.css'</span><span class="token punctuation">)</span>
+</code></pre></div><p>    这样我们就精准地引入了对应 lib 下的 Button 组件的 JS 和 CSS 代码了，也就实现了按需引入 Button 组件。</p> <ol start="2"><li>实现组件跟样式的分离<br>
+根据以上的分析，我们知道我们接下来的任务就是要把组件跟样式进行分离；</li></ol> <ul><li>首先我们看下<code>element-ui</code>的<code>package.json</code>的<code>scripts</code>构建命令</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token string">&quot;bootstrap&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;yarn || npm i&quot;</span>,
+<span class="token string">&quot;build:file&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/bin/iconInit.js &amp; node build/bin/build-entry.js &amp; node build/bin/i18n.js &amp; node build/bin/version.js&quot;</span>,
+<span class="token string">&quot;build:theme&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/bin/gen-cssfile &amp;&amp; gulp build --gulpfile packages/theme-chalk/gulpfile.js &amp;&amp; cp-cli packages/theme-chalk/lib lib/theme-chalk&quot;</span>,
+<span class="token string">&quot;build:utils&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;cross-env BABEL_ENV=utils babel src --out-dir lib --ignore src/index.js&quot;</span>,
+<span class="token string">&quot;build:umd&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/bin/build-locale.js&quot;</span>,
+<span class="token string">&quot;clean&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;rimraf lib &amp;&amp; rimraf packages/*/lib &amp;&amp; rimraf test/**/coverage&quot;</span>,
+<span class="token string">&quot;deploy:build&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run build:file &amp;&amp; cross-env NODE_ENV=production webpack --config build/webpack.demo.js &amp;&amp; echo element.eleme.io&gt;&gt;examples/element-ui/CNAME&quot;</span>,
+<span class="token string">&quot;deploy:extension&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;cross-env NODE_ENV=production webpack --config build/webpack.extension.js&quot;</span>,
+<span class="token string">&quot;dev:extension&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;rimraf examples/extension/dist &amp;&amp; cross-env NODE_ENV=development webpack --watch --config build/webpack.extension.js&quot;</span>,
+<span class="token string">&quot;dev&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run bootstrap &amp;&amp; npm run build:file &amp;&amp; cross-env NODE_ENV=development webpack-dev-server --config build/webpack.demo.js &amp; node build/bin/template.js&quot;</span>,
+<span class="token string">&quot;dev:play&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run build:file &amp;&amp; cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config build/webpack.demo.js&quot;</span>,
+<span class="token string">&quot;dist&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run clean &amp;&amp; npm run build:file &amp;&amp; webpack --config build/webpack.conf.js &amp;&amp; webpack --config build/webpack.common.js &amp;&amp; webpack --config build/webpack.component.js &amp;&amp; npm run build:utils &amp;&amp; npm run build:umd &amp;&amp; npm run build:theme&quot;</span>,
+<span class="token string">&quot;i18n&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/bin/i18n.js&quot;</span>,
+<span class="token string">&quot;lint&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;eslint src/**/* test/**/* packages/**/* build/**/* --quiet&quot;</span>,
+<span class="token string">&quot;pub&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run bootstrap &amp;&amp; sh build/git-release.sh &amp;&amp; sh build/release.sh &amp;&amp; node build/bin/gen-indices.js &amp;&amp; sh build/deploy-faas.sh&quot;</span>,
+<span class="token string">&quot;test&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run lint &amp;&amp; npm run build:theme &amp;&amp; cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/unit/karma.conf.js --single-run&quot;</span>,
+<span class="token string">&quot;test:watch&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm run build:theme &amp;&amp; cross-env BABEL_ENV=test karma start test/unit/karma.conf.js&quot;</span>
+</code></pre></div><p>    是不是有点懵逼，这都是啥咋这么多？？？ 我的内心其实也是很这啥都啥...<br>
+    我对其中的一些命令进行了删除保留了一些 暂时我们能用到的，如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token string">&quot;init&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm install commitizen -g &amp;&amp; commitizen init cz-conventional-changelog --save-dev --save-exact &amp;&amp; npm run bootstrap&quot;</span>,
+<span class="token string">&quot;bootstrap&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;npm install &amp;&amp; cd ./packages/theme-chalk &amp;&amp; npm install&quot;</span>,
+<span class="token string">&quot;build:style&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;gulp build --gulpfile packages/theme-chalk/gulpfile.js &amp;&amp; cp-cli packages/theme-chalk/lib lib/theme-chalk&quot;</span>,
+<span class="token string">&quot;build:docs&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;vue-cli-service build&quot;</span>,
+<span class="token string">&quot;build:lib&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/build-lib.js&quot;</span>,
+<span class="token string">&quot;build:entry&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;node build/build-entry.js &quot;</span>,
+<span class="token string">&quot;serve&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;vue-cli-service serve&quot;</span>,
+<span class="token string">&quot;clean&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;rimraf lib &amp;&amp; rimraf packages/*/lib&quot;</span>,
+<span class="token string">&quot;deploy&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;sh build/deploy.sh&quot;</span>,
+<span class="token string">&quot;lint&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;vue-cli-service lint&quot;</span>,
+<span class="token string">&quot;lib&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;vue-cli-service build --target lib --name feui --dest lib packages/index.js &amp;&amp; webpack --config ./build/webpack.component.js&quot;</span>
+</code></pre></div><ul><li>组件样式的分离<br></li></ul> <ol><li><p>首先解释一下<code>npm run init</code>做的那几件事：</p> <ol><li>安装了两个有关<code>git commit</code>的相关规范插件，主要是在功能提交上做一些规定</li> <li>启动了第二个命令<code>npm run bootstrap</code><br></li></ol></li> <li><p><code>npm run bootstrap</code>做的几件事：</p> <ol><li>安装所有的依赖</li> <li><code>cd ./packages/theme-chalk</code>目录下，安装gulp相关的依赖；</li></ol></li></ol> <blockquote><p>注：<code>element-ui</code>采用了gulp对<code>scss</code>文件进行打包；个人觉得还是挺好的，gulp比较简单不像webpack的配置那么复杂，能够很简单的处理<code>scss</code><br></p></blockquote> <ol start="3"><li><code>build:style</code>做的几件事：
+<ol><li>对组件样式进行打包到当前<code>lib</code>目录下</li> <li>利用<code>cp-cli</code>插件将打包好的<code>lib</code>文件夹内容复制到<code>lib/theme-chalk</code>目录下<br></li></ol></li></ol> <blockquote><p>到此我们就完成了样式的打包及输出到指定的目录啦，此处有掌声...<br></p></blockquote> <ul><li>接下来我们介绍一下将组件js单独抽离：</li></ul> <ol><li>如果你运行<code>npm run lib</code>命令时候，你会发现组件的js都被单独打包出来了，那这是如何实现的呢？我们看下这条命令<code>webpack --config ./build/webpack.component.js</code>,对，就是他了；源码如下：</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ProgressBarPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'progress-bar-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> VueLoaderPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vue-loader/lib/plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Components <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./get-components'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> entry <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Components<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">c</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./packages/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>c<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/index.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> webpackConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  mode<span class="token operator">:</span> <span class="token string">'production'</span><span class="token punctuation">,</span>
+  entry<span class="token operator">:</span> entry<span class="token punctuation">,</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'./lib'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token operator">:</span> <span class="token string">'[name].js'</span><span class="token punctuation">,</span>
+    chunkFilename<span class="token operator">:</span> <span class="token string">'[id].js'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token operator">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.vue'</span><span class="token punctuation">,</span> <span class="token string">'.json'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  performance<span class="token operator">:</span> <span class="token punctuation">{</span>
+    hints<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  stats<span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>  
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+      exclude<span class="token operator">:</span> <span class="token regex">/node_modules/</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.vue$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">'vue-loader'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">ProgressBarPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">VueLoaderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> webpackConfig<span class="token punctuation">;</span>
+</code></pre></div><p>    很熟悉是吧，对！就是你想的那样---多文件入口打包；这里里面有个<code>get-components</code>工具方法就是返回所有的<code>packages</code>下的组件文件名称;这样我们就可以通过命令自动注入组件的js文件啦～</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> excludes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'index.js'</span><span class="token punctuation">,</span>
+  <span class="token string">'theme-chalk'</span><span class="token punctuation">,</span>
+  <span class="token string">'mixins'</span><span class="token punctuation">,</span>
+  <span class="token string">'utils'</span><span class="token punctuation">,</span>
+  <span class="token string">'fonts'</span><span class="token punctuation">,</span>
+  <span class="token string">'.DS_Store'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> dirs <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readdirSync</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../packages'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> dirs<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">dirName</span> <span class="token operator">=&gt;</span> excludes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>dirName<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="2"><li>再来说一下<code>npm run build:entry</code> 这里会执行<code>build/build-entry.js</code>,源码如下:</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs-extra'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> uppercamelize <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'uppercamelcase'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Components <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./get-components'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> packageJson <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../package.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> version <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VERSION</span> <span class="token operator">||</span> packageJson<span class="token punctuation">.</span>version<span class="token punctuation">;</span>
+<span class="token keyword">const</span> tips <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/* eslint-disable */
+// This file is auto gererated by build/build-entry.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">buildPackagesEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> uninstallComponents <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Message'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> importList <span class="token operator">=</span> Components<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>
+    <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">import </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">uppercamelize</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> from './</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> exportList <span class="token operator">=</span> Components<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">uppercamelize</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> installList <span class="token operator">=</span> exportList<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>
+    <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token operator">!</span><span class="token operator">~</span>uninstallComponents<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">uppercamelize</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> content <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tips<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>importList<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    const version = '</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>version<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'
+    const components = [
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>installList<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">',\n  '</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    ]
+    const install = Vue =&gt; {
+      components.forEach(Component =&gt; {
+        Vue.use(Component)
+      })
+
+      Vue.prototype.$message = Message
+    };
+    /* istanbul ignore if */
+    if (typeof window !== 'undefined' &amp;&amp; window.Vue) {
+      install(window.Vue)
+    }
+    export {
+      install,
+      version,
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>exportList<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">',\n  '</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    }
+    export default {
+      install,
+      version
+    }
+  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../packages/index.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">buildPackagesEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><p>    不难发现，这里给我们自动化生成了一个<code>packages/index.js</code>文件，是不是感觉技术减少人力? 心里：&quot;卧槽...&quot;<br>
+3. <code>npm run build:lib</code>，通过上面的学习，到此这个命令其实也就不神秘啦，里面也就是做了一件汇总的事情：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * Build npm lib
+ */</span>
+<span class="token keyword">const</span> shell <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'shelljs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> signale <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'signale'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> Signale <span class="token punctuation">}</span> <span class="token operator">=</span> signale<span class="token punctuation">;</span>
+<span class="token keyword">const</span> tasks <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'bootstrap'</span><span class="token punctuation">,</span>
+  <span class="token string">'lint'</span><span class="token punctuation">,</span>
+  <span class="token string">'clean'</span><span class="token punctuation">,</span>
+  <span class="token string">'build:entry'</span><span class="token punctuation">,</span>
+  <span class="token string">'lib'</span><span class="token punctuation">,</span>
+  <span class="token string">'build:style'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+tasks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">task</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  signale<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> interactive <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Signale</span><span class="token punctuation">(</span><span class="token punctuation">{</span> interactive<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  interactive<span class="token punctuation">.</span><span class="token function">pending</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  shell<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">npm run </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>task<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> --silent</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  interactive<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>    好了，基本的组件js分离功能也就完成了；</p> <h3 id="发布npm以及跟新到github-pages"><a href="#发布npm以及跟新到github-pages" class="header-anchor">#</a> 发布npm以及跟新到GitHub Pages</h3> <p>    这里就不介绍了，具体请戳<a href="https://juejin.im/post/5d2708e26fb9a07f06559812" target="_blank" rel="noopener noreferrer">项目如何发布到NPM<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>;
+<a href="https://juejin.im/post/5b14b2f06fb9a01e5e3d3121" target="_blank" rel="noopener noreferrer">静态页面如何发布到GithubPages<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ul><li>最后附上本项目的地址,如果喜欢就给个star✨吧
+<a href="https://github.com/774848686/fe-ui#readme" target="_blank" rel="noopener noreferrer">项目地址<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">7/13/2020, 12:22:06 PM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/blog/assets/js/app.fc5ea999.js" defer></script><script src="/blog/assets/js/30.0ab476b4.js" defer></script>
+  </body>
+</html>
